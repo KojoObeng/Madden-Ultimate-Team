@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecf3b096-ec03-45e1-abd2-4d1b4bc99f46" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUTHead Scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/MUTHead Scraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MutData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MutData.csv" afterDir="false" />
     </list>

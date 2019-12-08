@@ -32,7 +32,10 @@ features = overview_stats + card_stats + player_traits + gen_attr + off_attr + d
 #  Setting Selenium Browser Stuff
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options = Options()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
+chrome_options.add_extension('UblockOrigin.crx')
+#driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', chrome_options=chrome_options)
+
 chrome_options.add_experimental_option("prefs", prefs)
 
 browser1 = webdriver.Chrome(options=chrome_options)
