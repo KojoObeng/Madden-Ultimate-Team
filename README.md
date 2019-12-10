@@ -1,4 +1,4 @@
-# Madden UltimateTeam
+# Madden Ultimate Team
 
 ## What is Madden Ultimate Team?
 
