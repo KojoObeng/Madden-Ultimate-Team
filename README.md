@@ -7,7 +7,7 @@ Madden Ultimate Team is a popular mode in EA's Madden NFL video game series. Eve
 Since there are so many people playing Madden Ultimate Team. The auction house simulates a real economy where prices of the in-game currency, 'coins', are valid determinants of the worth of a card.
 
 ## Muthead Scraper
-I've created a https://www.muthead.com/20/players/ scraper to pull all the stats of all the cards in the game. This was done in Python and Selenium. The use of Selenium was necessitated since MUTHead dynamically created through Javascript since Madden 20. Unfortunately, it is very slow due to MUTHead response times and the limitations of Selenium framework. It is recommended to download the .csv files I commit instead of running the code yourself since it could take up to 2 hours to scrape the stats of the thousands of cards on the site.
+I've created a [MUTHead](https://www.muthead.com/20/players/) scraper to pull all the stats of all the cards in the game. This was done in Python and Selenium. The use of Selenium was necessitated since MUTHead dynamically created through Javascript since Madden 20. Unfortunately, it is very slow due to MUTHead response times and the limitations of Selenium framework. It is recommended to download the .csv files I commit instead of running the code yourself since it could take up to 2 hours to scrape the stats of the thousands of cards on the site.
 
 ## Price Predictor
 I want to create
