@@ -1,16 +1,18 @@
 
-from time import sleep
+import time
 from multiprocessing import Process
 import threading
 
 from bs4 import BeautifulSoup
 import pandas as pd
+import numpy as np
 import requests
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 # Getting Basic info and link to Player Page
+start_time = time.time()
 data = []
 home_url = "https://www.muthead.com"
 features = []
@@ -32,26 +34,26 @@ features = overview_stats + card_stats + player_traits + gen_attr + off_attr + d
 #  Setting Selenium Browser Stuff
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options = Options()
-#chrome_options.add_argument("--headless")
-chrome_options.add_extension('UblockOrigin.crx')
-#driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', chrome_options=chrome_options)
 
-chrome_options.add_experimental_option("prefs", prefs)
+chrome_options.add_argument("--headless")
 
-browser1 = webdriver.Chrome(options=chrome_options)
-browser2 = webdriver.Chrome(options=chrome_options)
-browser3 = webdriver.Chrome(options=chrome_options)
+#chrome_options.add_extension('UblockOrigin.crx')
+#chrome_options.add_experimental_option("prefs", prefs)
 
+browser1 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
+browser2 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
+browser3 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
+browser4 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
+browser5 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
 
 def grab_data(browser_num, start_page):
-    for page_number in range(start_page, 4, 3):
+    for page_number in range(start_page, 211, 5):
         # Get all the pages of all the players
         page_url = home_url + "/20/players?page=" + str(page_number)
         r = requests.get(page_url)  # returns a response
         content = r.text
         soup = BeautifulSoup(content, features="html.parser")
         players = soup.findAll("li", class_="player-listing__item")
-
         for player in players:
             player_data = []
             # OVERVIEW STATS
@@ -83,140 +85,142 @@ def grab_data(browser_num, start_page):
             QUICKSELL = str(player_soup.find(class_="infobox__statline-left").contents[0])
             QS_CURRENCY = str(player_soup.find(class_="infobox__statline-right").contents[0])
 
-            # Assign Player Traits [NEED TO MAKE MORE READABLE using a dictionary, or a tuple]
+            # Assign Player Traits
             try:
                 clutch = str(player_soup.find(class_="infobox__statline-left",
-                                    text="Clutch").find_next_sibling().contents[0])
+                                              text="Clutch").find_next_sibling().contents[0])
             except AttributeError:
                 clutch = "N/A"
 
             try:
                 penalty = str(player_soup.find(class_="infobox__statline-left",
-                                text="Penalty").find_next_sibling().contents[0])
+                                               text="Penalty").find_next_sibling().contents[0])
             except AttributeError:
                 penalty = "N/A"
 
             try:
                 lb_style = str(player_soup.find(class_="infobox__statline-left",
-                                text="LB Style").find_next_sibling().contents[0])
+                                                text="LB Style").find_next_sibling().contents[0])
             except AttributeError:
                 lb_style = "N/A"
 
             try:
                 dl_swim = str(player_soup.find(class_="infobox__statline-left",
-                                text="DL Swim").find_next_sibling().contents[0])
+                                               text="DL Swim").find_next_sibling().contents[0])
             except AttributeError:
                 dl_swim = "N/A"
 
             try:
                 dl_spin = str(player_soup.find(class_="infobox__statline-left",
-                                text="DL Spin").find_next_sibling().contents[0])
+                                               text="DL Spin").find_next_sibling().contents[0])
             except AttributeError:
                 dl_spin = "N/A"
 
             try:
                 dl_bull = str(player_soup.find(class_="infobox__statline-left",
-                                text="DL Bull").find_next_sibling().contents[0])
+                                               text="DL Bull").find_next_sibling().contents[0])
             except AttributeError:
                 dl_bull = "N/A"
 
             try:
                 big_hitter = str(player_soup.find(class_="infobox__statline-left",
-                                text="Big Hitter").find_next_sibling().contents[0])
+                                                  text="Big Hitter").find_next_sibling().contents[0])
             except AttributeError:
                 big_hitter = "N/A"
 
             try:
                 strips_ball = str(player_soup.find(class_="infobox__statline-left",
-                                text="Strips Ball").find_next_sibling().contents[0])
+                                                   text="Strips Ball").find_next_sibling().contents[0])
             except AttributeError:
                 strips_ball = "N/A"
 
             try:
                 ball_in_air = str(player_soup.find(class_="infobox__statline-left",
-                                text="Plays Ball in Air").find_next_sibling().contents[0])
+                                                   text="Plays Ball in Air").find_next_sibling().contents[0])
             except AttributeError:
                 ball_in_air = "N/A"
 
             try:
                 high_motor = str(player_soup.find(class_="infobox__statline-left",
-                                            text="High Motor").find_next_sibling().contents[0])
+                                                  text="High Motor").find_next_sibling().contents[0])
             except AttributeError:
                 high_motor = "N/A"
 
             try:
                 covers_ball = str(player_soup.find(class_="infobox__statline-left",
-                                text="Covers Ball").find_next_sibling().contents[0])
+                                                   text="Covers Ball").find_next_sibling().contents[0])
             except AttributeError:
                 covers_ball = "N/A"
 
             try:
                 extra_yards = str(player_soup.find(class_="infobox__statline-left",
-                                text="First for Extra Yards").find_next_sibling().contents[0])
+                                                   text="First for Extra Yards").find_next_sibling().contents[0])
             except AttributeError:
                 extra_yards = "N/A"
 
             try:
                 agg_catch = str(player_soup.find(class_="infobox__statline-left",
-                                text="Makes Aggressive Catches").find_next_sibling().contents[0])
+                                                 text="Makes Aggressive Catches").find_next_sibling().contents[0])
             except AttributeError:
                 agg_catch = "N/A"
 
             try:
                 rac_catch = str(player_soup.find(class_="infobox__statline-left",
-                                text="Makes RAC Catches").find_next_sibling().contents[0])
+                                                 text="Makes RAC Catches").find_next_sibling().contents[0])
             except AttributeError:
                 rac_catch = "N/A"
 
             try:
                 poss_catch = str(player_soup.find(class_="infobox__statline-left",
-                                text="Makes Possession Catches").find_next_sibling().contents[0])
+                                                  text="Makes Possession Catches").find_next_sibling().contents[0])
             except AttributeError:
                 poss_catch = "N/A"
 
             try:
                 drops_open = str(player_soup.find(class_="infobox__statline-left",
-                                text="Drops Open Passes").find_next_sibling().contents[0])
+                                                  text="Drops Open Passes").find_next_sibling().contents[0])
             except AttributeError:
                 drops_open = "N/A"
 
             try:
                 sideline_catch = str(player_soup.find(class_="infobox__statline-left",
-                                text="Makes Sideline Catches").find_next_sibling().contents[0])
+                                                      text="Makes Sideline Catches").find_next_sibling().contents[0])
             except AttributeError:
                 sideline_catch = "N/A"
 
             try:
                 qb_style = str(player_soup.find(class_="infobox__statline-left",
-                                text="QB Style").find_next_sibling().contents[0])
+                                                text="QB Style").find_next_sibling().contents[0])
             except AttributeError:
                 qb_style = "N/A"
 
             try:
                 tight_spiral = str(player_soup.find(class_="infobox__statline-left",
-                                text="Throws Tight Spiral").find_next_sibling().contents[0])
+                                                    text="Throws Tight Spiral").find_next_sibling().contents[0])
             except AttributeError:
                 tight_spiral = "N/A"
 
             try:
                 sense_pressure = str(player_soup.find(class_="infobox__statline-left",
-                                text="Senses Pressure").find_next_sibling().contents[0])
+                                                      text="Senses Pressure").find_next_sibling().contents[0])
             except AttributeError:
                 sense_pressure = "N/A"
 
             try:
                 throw_away = str(player_soup.find(class_="infobox__statline-left",
-                                text="Throws Ball Away").find_next_sibling().contents[0])
+                                                  text="Throws Ball Away").find_next_sibling().contents[0])
             except AttributeError:
                 throw_away = "N/A"
 
             try:
                 force_passes = str(player_soup.find(class_="infobox__statline-left",
-                                text="Forces Passes").find_next_sibling().contents[0])
+                                                    text="Forces Passes").find_next_sibling().contents[0])
             except AttributeError:
                 force_passes = "N/A"
 
             eval(browser_num).get(player_url.replace("players", "compare"))
+            eval(browser_num).implicitly_wait(0.5)
+
             # GEN ATTRIBUTES
             SPD = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[1]/td[1]').text
@@ -336,15 +340,23 @@ def grab_data(browser_num, start_page):
 
 
 if __name__=='__main__':
-    thread1 = threading.Thread(target=grab_data, args=("browser1", 1))
-    thread2 = threading.Thread(target=grab_data, args=("browser2", 2))
-    thread3 = threading.Thread(target=grab_data, args=("browser3", 3))
+    thread1 = threading.Thread(target=grab_data, args=("browser1", 101))
+    thread2 = threading.Thread(target=grab_data, args=("browser2", 102))
+    thread3 = threading.Thread(target=grab_data, args=("browser3", 103))
+    thread4 = threading.Thread(target=grab_data, args=("browser4", 104))
+    thread5 = threading.Thread(target=grab_data, args=("browser5", 105))
     thread1.start()
     thread2.start()
     thread3.start()
+    thread4.start()
+    thread5.start()
     thread1.join()
     thread2.join()
     thread3.join()
+    thread4.join()
+    thread5.join()
     print("All other threads are finished")
 df = pd.DataFrame(data, columns=features)
-df.to_csv("MutData.csv")
+df.fillna(value=np.nan, inplace=True)
+df.to_csv("MutData2.csv")
+print(time.time() - start_time)

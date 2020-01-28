@@ -222,7 +222,7 @@ def grab_data(browser_num, start_page):
             sleep(0.7)
 
             # GEN ATTRIBUTES
-            SPD = eval(browser_num).find_element_by_xpath(
+            SPD = inteval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[1]/td[1]').text
             STR = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[1]').text
