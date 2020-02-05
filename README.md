@@ -9,7 +9,7 @@ Since there are so many people playing Madden Ultimate Team. The auction house s
 I've created a [MUTHead.com](https://www.muthead.com/20/players/) scraper to pull all the stats of all the cards in the game. This was done in Python using the Selenium library. The use of Selenium was necessitated since MUTHead dynamically created through Javascript since Madden 20. Unfortunately, even with the aid of the multi-threading library,  it is relatively slow due to MUTHead response times, limitations of Selenium framework, and the high number of cards of released.  It is recommended to download the .csv files I commit instead of running the code yourself since it could take up to 2 hours to scrape the stats of the thousands of cards on the site.
 
 ## 2. Price Predictor
-I want to create a model that predicts the price of a card given its stats. This will aid in indicating which players have a price premium that cannot be explained by statistics, thus allowing me to determine which players are the best value. Furthermore, it should show us what stats are the most valued for each position.
+I've created a model that predicts the price of a card given its stats. This will aid in indicating which players have a price premium that cannot be explained by statistics, thus allowing me to determine which players are the best value. Furthermore, it should show us what stats are the most valued for each position.
 
 ## 3. Position Cluster
 For fun, I want to see if I can create a clustering model that is able to guess a players position based on their stats. There might be some interesting results here that may indicate that some cards would be better suited for positions that they are not currently listed for.
