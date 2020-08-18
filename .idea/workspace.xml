@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ecf3b096-ec03-45e1-abd2-4d1b4bc99f46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PricePredictor.py" beforeDir="false" afterPath="$PROJECT_DIR$/PricePredictor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +123,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="828" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1577137001346" />
+    <state x="243" y="0" key="CommitChangelistDialog2" timestamp="1581395283072">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="243" y="0" key="CommitChangelistDialog2/0.0.1920.1050/-1360.118.1360.738@0.0.1920.1050" timestamp="1581395283072" />
     <state width="1420" height="134" key="GridCell.Tab.0.bottom" timestamp="1580546467462">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
