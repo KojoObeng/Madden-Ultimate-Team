@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ecf3b096-ec03-45e1-abd2-4d1b4bc99f46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MutData3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUTHead Scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/MUTHead Scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MutDataPred.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MutDataPred.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PricePredictor.py" beforeDir="false" afterPath="$PROJECT_DIR$/PricePredictor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReallySpeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReallySpeed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Unused_Code.py" beforeDir="false" afterPath="$PROJECT_DIR$/Unused_Code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chromedriver.exe" beforeDir="false" afterPath="$PROJECT_DIR$/chromedriver.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,8 +108,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.ReallySpeed" />
-        <item itemvalue="Python.PricePredictor" />
         <item itemvalue="Python.MUTHead Scraper" />
+        <item itemvalue="Python.PricePredictor" />
       </list>
     </recent_temporary>
   </component>
@@ -151,26 +156,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1128" y="347" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1591315731712" />
-    <state width="1101" height="257" key="GridCell.Tab.0.bottom" timestamp="1597764715798">
+    <state width="1169" height="207" key="GridCell.Tab.0.bottom" timestamp="1597901791619">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1067" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597730584190" />
-    <state width="1101" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1597764715798" />
-    <state width="1101" height="257" key="GridCell.Tab.0.center" timestamp="1597764715797">
+    <state width="1877" height="251" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597897738853" />
+    <state width="1169" height="207" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1597901791619" />
+    <state width="1169" height="207" key="GridCell.Tab.0.center" timestamp="1597901791619">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1067" height="233" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597730584189" />
-    <state width="1101" height="257" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1597764715797" />
-    <state width="1101" height="257" key="GridCell.Tab.0.left" timestamp="1597764715797">
+    <state width="1877" height="251" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597897738850" />
+    <state width="1169" height="207" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1597901791619" />
+    <state width="1169" height="207" key="GridCell.Tab.0.left" timestamp="1597901791618">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1067" height="233" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597730584189" />
-    <state width="1101" height="257" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1597764715797" />
-    <state width="1101" height="257" key="GridCell.Tab.0.right" timestamp="1597764715798">
+    <state width="1877" height="251" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597897738850" />
+    <state width="1169" height="207" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1597901791618" />
+    <state width="1169" height="207" key="GridCell.Tab.0.right" timestamp="1597901791619">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1067" height="233" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597730584189" />
-    <state width="1101" height="257" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1597764715798" />
+    <state width="1877" height="251" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597897738852" />
+    <state width="1169" height="207" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1597901791619" />
     <state width="1472" height="317" key="GridCell.Tab.1.bottom" timestamp="1597691284361">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -187,16 +192,5 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1472" height="317" key="GridCell.Tab.1.right/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1597691284361" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/PricePredictor.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

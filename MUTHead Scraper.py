@@ -17,6 +17,7 @@ data = []
 home_url = "https://www.muthead.com"
 features = []
 
+# All stats
 overview_stats = ["PLAYER_NAME", "OVR", "POS", "PROGRAM"]
 card_stats = ["TEAM", "HEIGHT", "WEIGHT", "ARCHETYPE", "PRICE", "QUICKSELL", "QS_CURRENCY"]
 player_traits = ["clutch", "penalty", "lb_style", "dl_swim", "dl_spin", "dl_bull", "big_hitter", "strips_ball",
@@ -35,7 +36,7 @@ features = overview_stats + card_stats + player_traits + gen_attr + off_attr + d
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options = Options()
 
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 
 #chrome_options.add_extension('UblockOrigin.crx')
 #chrome_options.add_experimental_option("prefs", prefs)

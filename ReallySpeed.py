@@ -1,52 +1,55 @@
 import pandas as pd
 import numpy as np
 import math
-import copy
 
 from sklearn import linear_model
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.model_selection import train_test_split, GridSearchCV
 import sklearn.metrics as metrics
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-import statsmodels.api as sm
+
+import matplotlib.pyplot as plt
+from matplotlib import artist
 
 
-class speed_model:
+class model:
     def __init__(self):
 
         # Adjust Print Settings
         pd.set_option('display.max_columns', 100)
         pd.set_option('display.max_rows', 200)
 
-        # Remove NA Price rows,
+        # Remove NA Price rows
         MutData = pd.read_csv("MutData.csv")
-        MutData = MutData[MutData.PRICE != "Unknown"]
-        MutData.dropna(subset=['SPD', 'STR', 'AGI', 'ACC', 'AWA', 'CTH', 'JMP',
+        self.MutData = MutData[MutData.PRICE != "Unknown"]
+        self.all_skills = ['STR', 'AGI', 'ACC', 'AWA', 'CTH', 'JMP',
                           'STA', 'INJ', 'TRK', 'ELU', 'BTK', 'BCV', 'SFA', 'SPM', 'JKM', 'CAR', 'SRR', 'MRR', 'DRR', 'CIT',
                           'SPC', 'RLS', 'THP', 'SAC', 'MAC', 'DAC', 'RUN', 'TUP', 'BSK', 'PAC', 'RBK', 'RBP', 'RBF', 'PBK',
                           'PBP', 'PBF', 'LBK', 'IBL', 'TAK', 'POW', 'PMV', 'FMV', 'BSH', 'PUR', 'PRC', 'MCV', 'ZCV', 'PRS',
-                          'KPW', 'KAC', 'RET'], inplace=True)
+                          'KPW', 'KAC', 'RET'] #SPD
+        self.MutData.dropna(subset=self.all_skills)
 
-        self.MutData = pd.get_dummies(data=MutData, columns=['POS', 'ARCHETYPE', 'PROGRAM'], drop_first=False)
-        self.MutData.drop(columns=['Unnamed: 0', 'TEAM', "HEIGHT", "WEIGHT", "QUICKSELL", "QS_CURRENCY", "clutch", "penalty",
-              "lb_style", "dl_swim", "dl_spin", "dl_bull", "big_hitter", "strips_ball", "ball_in_air", "high_motor", "covers_ball",
-              "extra_yards", "agg_catch", "rac_catch", "poss_catch", "drops_open", "sideline_catch", "qb_style", "tight_spiral",
-              "sense_pressure", "throw_away", "force_passes"], inplace=True)
+        # Removing not used
+        not_used = ["Unnamed: 0", "PLAYER_NAME", "TEAM", "HEIGHT", "WEIGHT", "QUICKSELL", "QS_CURRENCY", "clutch",
+                    "penalty", "lb_style",
+                    "dl_swim", "dl_spin", "dl_bull", "big_hitter", "strips_ball", "ball_in_air", "high_motor",
+                    "covers_ball",
+                    "extra_yards", "agg_catch", "rac_catch", "poss_catch", "drops_open", "sideline_catch", "qb_style",
+                    "tight_spiral", "sense_pressure", "throw_away", "force_passes"]
+        for skill in not_used:
+            self.MutData.drop(skill, axis=1)
+
+        # Adding categorical features
+        self.MutData = pd.get_dummies(data=self.MutData, columns=['POS', 'ARCHETYPE', 'PROGRAM'], drop_first=True)
+
         self.all_vars = list(self.MutData)
-        self.add_interactions()
+        # Adding quadratic features
+        for skill in self.all_skills:
+            self.MutData[skill + " SQUARED"] = self.MutData[skill] ** 2
 
-    def add_interactions(self):
-        # SPD Interactions
-        speed_pos = [col for col in self.all_vars if ("POS_" in col) and col not in []]
-        # notin = ["POS_QB", "POS_P", "POS_K", "POS_C", "POS_DT", "POS_FB", "POS_LE", "POS_RG", "POS_LG"]]
-
-        # Adding Position-Speed interactions to most positions (not those with high p-values and squaring)
-        for col in speed_pos:
-            self.MutData[col.split("_")[1] + "_" + "SPD"] = self.MutData[col].mul(self.MutData['SPD'])
-            self.MutData[col.split("_")[1] + "_" + "SPD " + "SQUARED"] = self.MutData[col].mul(self.MutData['SPD'])**2
-
-        skill_poll_dict = [[["POS_QB"], ['RUN']],
-                           [["POS_RT", "POS_RG", "POS_C", "POS_LG", "POS_LT"], ["RBK", "RBP", "RBF", "RBK", "PBP", "PBF"]],
+        # Adding Position-Skill Interactions
+        pos_skill_dict = [[["POS_QB"], ['RUN']],
+                           [["POS_RT", "POS_RG", "POS_LG", "POS_LT"], ["RBK", "RBP", "RBF", "RBK", "PBP", "PBF"]],
                            [["POS_HB", "POS_WR", "POS_TE"], ["STR", "AGI", "ACC", "CTH", "JMP", "BTK", "BCV", "SFA", "SPM",
                                     "JKM", "CAR", "SRR", "MRR", "DRR", "CIT", "SPC", "RLS", "RBK", "RBP", "RBF", "PBK", "PBP",
                                     "PBF"]],
@@ -55,18 +58,27 @@ class speed_model:
                                                                   "ZCV"]],
                            [["POS_CB", "POS_FS", "POS_SS"], ["POW", "BSH", "PUR", "PRC", "MCV", "ZCV", "PRS"]],
                            [["POS_K", "POS_P"], ["KAC", "KPW"]]]
-
-        for combo in skill_poll_dict:
+        for combo in pos_skill_dict:
             for pos in combo[0]:
                 for skill in combo[1]:
                     self.MutData[pos.split("_")[1] + "_" + skill] = self.MutData[pos].mul(self.MutData[skill])
+        print(self.MutData)
+
+    def speed_model(self):
+        # Adding Speed Squared and Position Interactions to most positions (not those with high p-values and squaring)
+        speed_pos = [col for col in self.all_vars if ("POS_" in col) and col not in []]
+        # notin = ["POS_QB", "POS_P", "POS_K", "POS_C", "POS_DT", "POS_FB", "POS_LE", "POS_RG", "POS_LG"]]
+        for col in speed_pos:
+            self.MutData[col.split("_")[1] + "_" + "SPD"] = self.MutData[col].mul(self.MutData['SPD']**2)
+            self.MutData[col.split("_")[1] + "_" + "SPD " + "SQUARED"] = self.MutData[col].mul(self.MutData['SPD']**2)
 
     def do_regression(self):
         def setup_regression():
             # Setup regression
-            self.X = self.MutData.drop(columns=["PRICE", "PLAYER_NAME"], inplace=False)
+            self.X = self.MutData.drop(columns=["PRICE", "PLAYER_NAME", "TEAM"], inplace=False)
             self.y = self.MutData["PRICE"].astype(float).transform(lambda x: math.log(x))
             self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=.2,)
+            print(self.X)
 
         def linear_regression():
             self.linear_regr = LinearRegression().fit(self.X_train, self.y_train)
@@ -96,7 +108,6 @@ class speed_model:
             y_pred = self.lasso_regr.predict(self.X_test)
             lasso_results = pd.DataFrame({'Actual': self.y_test, 'Predicted': y_pred}).apply(np.exp)
 
-
             self.coefficient_picks(self.lasso_regr.coef_, "Lasso")
             self.regression_results(self.y_test, y_pred, "lasso_regr")
 
@@ -106,8 +117,6 @@ class speed_model:
         linear_regression()
         ridge_regression()
         lasso_regression()
-
-
     # -----------------------------------------------------------------------------
 
     # Which coefficients were picked in this type of regression?
@@ -146,11 +155,24 @@ class speed_model:
         MutDataFinal.to_csv("MutDataPred.csv", index=False)
         print("Printed to MutDataPred.csv")
 
+    def plot(self):
+        n = 100000
+        f = lambda x: x/10
 
-### Calls
-Test = speed_model()
-Test.do_regression()
-Test.final_model()
+        fig = plt.figure()
+        ax = plt.axes()
+
+        ax.scatter(self.X["SPD"], self.y)
+        plt.plot(self.X["SPD"], f(self.X["SPD"]), color = "black")
+        plt.show()
+
+
+
+## Calls
+Test = model()
+#Test.speed_model()
+#Test.do_regression()
+#Test.plot()
 
 
 
