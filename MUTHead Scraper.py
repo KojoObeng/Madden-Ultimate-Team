@@ -17,6 +17,7 @@ data = []
 home_url = "https://www.muthead.com"
 features = []
 
+# All stats
 overview_stats = ["PLAYER_NAME", "OVR", "POS", "PROGRAM"]
 card_stats = ["TEAM", "HEIGHT", "WEIGHT", "ARCHETYPE", "PRICE", "QUICKSELL", "QS_CURRENCY"]
 player_traits = ["clutch", "penalty", "lb_style", "dl_swim", "dl_spin", "dl_bull", "big_hitter", "strips_ball",
@@ -35,16 +36,16 @@ features = overview_stats + card_stats + player_traits + gen_attr + off_attr + d
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options = Options()
 
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 
-#chrome_options.add_extension('UblockOrigin.crx')
+#chrome_options.add_extension('/Settings/UblockOrigin.crx')
 #chrome_options.add_experimental_option("prefs", prefs)
 
-browser1 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
-browser2 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
-browser3 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
-browser4 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
-browser5 = webdriver.Chrome('./chromedriver.exe', options=chrome_options)
+browser1 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
+browser2 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
+browser3 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
+browser4 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
+browser5 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
 
 def grab_data(browser_num, start_page):
     for page_number in range(start_page, 211, 5):
@@ -358,5 +359,5 @@ if __name__=='__main__':
     print("All other threads are finished")
 df = pd.DataFrame(data, columns=features)
 df.fillna(value=np.nan, inplace=True)
-df.to_csv("MutData2.csv")
+df.to_csv("/Results/MutDataTest.csv")
 print(time.time() - start_time)
