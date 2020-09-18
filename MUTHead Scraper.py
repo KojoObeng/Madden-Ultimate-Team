@@ -222,7 +222,9 @@ def grab_data(browser_num, start_page):
             eval(browser_num).get(player_url.replace("players", "compare"))
             eval(browser_num).implicitly_wait(0.5)
 
+
             # GEN ATTRIBUTES
+            # Long code trying not to generate variables dynamically
             SPD = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[1]/td[1]').text
             STR = eval(browser_num).find_element_by_xpath(
@@ -241,6 +243,7 @@ def grab_data(browser_num, start_page):
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[8]/td[1]').text
             INJ = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[9]/td[1]').text
+           
             # OFF ATTRIBUTES
             TRK = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[3]/table/tbody/tr[1]/td[1]').text
@@ -332,7 +335,8 @@ def grab_data(browser_num, start_page):
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[5]/table/tbody/tr[2]/td[1]').text
             RET = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[5]/table/tbody/tr[3]/td[1]').text
-
+            
+            # Appending all the features together
             for feature in features:
                 player_data.append(eval(feature))
             print(player_data)
@@ -346,16 +350,11 @@ if __name__=='__main__':
     thread3 = threading.Thread(target=grab_data, args=("browser3", 103))
     thread4 = threading.Thread(target=grab_data, args=("browser4", 104))
     thread5 = threading.Thread(target=grab_data, args=("browser5", 105))
-    thread1.start()
-    thread2.start()
-    thread3.start()
-    thread4.start()
-    thread5.start()
-    thread1.join()
-    thread2.join()
-    thread3.join()
-    thread4.join()
-    thread5.join()
+    for i in range(0,5)
+        eval("thread" + str(i)).start()
+    for i in range(0,5)
+        eval("thread" + str(i)).join()
+        
     print("All other threads are finished")
 df = pd.DataFrame(data, columns=features)
 df.fillna(value=np.nan, inplace=True)

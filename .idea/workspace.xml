@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ecf3b096-ec03-45e1-abd2-4d1b4bc99f46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUTHead Scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/MUTHead Scraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MutData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MutData2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MutDataPred.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PricePredictor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReallySpeed.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UblockOrigin.crx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chromedriver.exe" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,25 +164,25 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="754" y="313" key="FileChooserDialogImpl/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598032847143" />
-    <state width="1899" height="272" key="GridCell.Tab.0.bottom" timestamp="1598219687078">
+    <state width="1899" height="272" key="GridCell.Tab.0.bottom" timestamp="1598220989170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="272" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598219687078" />
+    <state width="1899" height="272" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598220989170" />
     <state width="1017" height="272" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1598132848273" />
-    <state width="1899" height="272" key="GridCell.Tab.0.center" timestamp="1598219687078">
+    <state width="1899" height="272" key="GridCell.Tab.0.center" timestamp="1598220989170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="272" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598219687078" />
+    <state width="1899" height="272" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598220989170" />
     <state width="1017" height="272" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1598132848272" />
-    <state width="1899" height="272" key="GridCell.Tab.0.left" timestamp="1598219687078">
+    <state width="1899" height="272" key="GridCell.Tab.0.left" timestamp="1598220989170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="272" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598219687078" />
+    <state width="1899" height="272" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598220989170" />
     <state width="1017" height="272" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1598132848272" />
-    <state width="1899" height="272" key="GridCell.Tab.0.right" timestamp="1598219687078">
+    <state width="1899" height="272" key="GridCell.Tab.0.right" timestamp="1598220989170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="272" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598219687078" />
+    <state width="1899" height="272" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.-157.1920.1050@0.0.1920.1050" timestamp="1598220989170" />
     <state width="1017" height="272" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1598132848272" />
     <state width="1472" height="317" key="GridCell.Tab.1.bottom" timestamp="1597952781429">
       <screen x="0" y="0" width="1920" height="1050" />
