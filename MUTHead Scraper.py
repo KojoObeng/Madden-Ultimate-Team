@@ -19,7 +19,8 @@ features = []
 
 # All stats
 overview_stats = ["PLAYER_NAME", "OVR", "POS", "PROGRAM"]
-card_stats = ["TEAM", "HEIGHT", "WEIGHT", "ARCHETYPE", "PRICE", "QUICKSELL", "QS_CURRENCY"]
+card_stats = ["TEAM", "HEIGHT", "WEIGHT",
+              "ARCHETYPE", "PRICE", "QUICKSELL", "QS_CURRENCY"]
 player_traits = ["clutch", "penalty", "lb_style", "dl_swim", "dl_spin", "dl_bull", "big_hitter", "strips_ball",
                  "ball_in_air", "high_motor", "covers_ball", "extra_yards", "agg_catch", "rac_catch",
                  "poss_catch", "drops_open", "sideline_catch", "qb_style", "tight_spiral", "sense_pressure",
@@ -28,24 +29,32 @@ gen_attr = ["SPD", "STR", "AGI", "ACC", "AWA", "CTH", "JMP", "STA", "INJ"]
 off_attr = ["TRK", "ELU", "BTK", "BCV", "SFA", "SPM", "JKM", "CAR", "SRR", "MRR", "DRR", "CIT", "SPC", "RLS",
             "THP", "SAC", "MAC", "DAC", "RUN", "TUP", "BSK", "PAC", "RBK", "RBP", "RBF", "PBK", "PBP", "PBF",
             "LBK", "IBL"]
-def_attr = ["TAK", "POW", "PMV", "FMV", "BSH", "PUR", "PRC", "MCV", "ZCV", "PRS"]
+def_attr = ["TAK", "POW", "PMV", "FMV",
+            "BSH", "PUR", "PRC", "MCV", "ZCV", "PRS"]
 st_attr = ["KPW", "KAC", "RET"]
-features = overview_stats + card_stats + player_traits + gen_attr + off_attr + def_attr + st_attr
+features = overview_stats + card_stats + player_traits + \
+    gen_attr + off_attr + def_attr + st_attr
 
 #  Setting Selenium Browser Stuff
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options = Options()
 
-#chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 
-#chrome_options.add_extension('/Settings/UblockOrigin.crx')
+# chrome_options.add_extension('/Settings/UblockOrigin.crx')
 #chrome_options.add_experimental_option("prefs", prefs)
 
-browser1 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
-browser2 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
-browser3 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
-browser4 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
-browser5 = webdriver.Chrome('Settings/chromedriver.exe', options=chrome_options)
+browser1 = webdriver.Chrome(
+    'Settings/chromedriver.exe', options=chrome_options)
+browser2 = webdriver.Chrome(
+    'Settings/chromedriver.exe', options=chrome_options)
+browser3 = webdriver.Chrome(
+    'Settings/chromedriver.exe', options=chrome_options)
+browser4 = webdriver.Chrome(
+    'Settings/chromedriver.exe', options=chrome_options)
+browser5 = webdriver.Chrome(
+    'Settings/chromedriver.exe', options=chrome_options)
+
 
 def grab_data(browser_num, start_page):
     for page_number in range(start_page, 211, 5):
@@ -60,9 +69,12 @@ def grab_data(browser_num, start_page):
             # OVERVIEW STATS
             ref_page_num = player.find("a").get("href")
             OVR = int(player.span.contents[0].strip())
-            PLAYER_NAME = str(player.find("div", class_="list-info-player__player-name").contents[0].strip())
-            POS = str(player.find("div", class_="list-info-player__player-info").contents[0].split("|")[0].strip())
-            PROGRAM = str(player.find("div", class_="list-info-player__player-info").contents[0].split("|")[1].strip())
+            PLAYER_NAME = str(player.find(
+                "div", class_="list-info-player__player-name").contents[0].strip())
+            POS = str(player.find(
+                "div", class_="list-info-player__player-info").contents[0].split("|")[0].strip())
+            PROGRAM = str(player.find(
+                "div", class_="list-info-player__player-info").contents[0].split("|")[1].strip())
 
             # Get Card Page
             player_url = home_url + ref_page_num
@@ -71,20 +83,27 @@ def grab_data(browser_num, start_page):
             player_soup = BeautifulSoup(player_content, features="html.parser")
 
             # CARD STATS
-            TEAM = player_soup.find("a", class_="mut-player-summary__team").contents[0].strip()
-            HEIGHT = str(player_soup.find("span", class_="mut-player-summary__height").contents[0][4:])
+            TEAM = player_soup.find(
+                "a", class_="mut-player-summary__team").contents[0].strip()
+            HEIGHT = str(player_soup.find(
+                "span", class_="mut-player-summary__height").contents[0][4:])
             HEIGHT_INCHES = int(HEIGHT[0])*12 + int(HEIGHT[3])
-            WEIGHT = player_soup.find("span", class_="mut-player-summary__weight").contents[0][3:]
-            ARCHETYPE = str(player_soup.find(text="Archetype").parent.parent.parent.p.contents[0])
-            PRICE = player_soup.find(class_="mut-player-price__price").contents[0]
+            WEIGHT = player_soup.find(
+                "span", class_="mut-player-summary__weight").contents[0][3:]
+            ARCHETYPE = str(player_soup.find(
+                text="Archetype").parent.parent.parent.p.contents[0])
+            PRICE = player_soup.find(
+                class_="mut-player-price__price").contents[0]
             if 'K' in PRICE:
-                PRICE = int(float(PRICE.replace('K', ''))* 1000)
+                PRICE = int(float(PRICE.replace('K', '')) * 1000)
             elif 'M' in PRICE:
-                 PRICE = int(float(PRICE.replace('M', '')) * 1000000)
+                PRICE = int(float(PRICE.replace('M', '')) * 1000000)
             elif '—' in PRICE:
                 PRICE = 'Not Auctionable'
-            QUICKSELL = str(player_soup.find(class_="infobox__statline-left").contents[0])
-            QS_CURRENCY = str(player_soup.find(class_="infobox__statline-right").contents[0])
+            QUICKSELL = str(player_soup.find(
+                class_="infobox__statline-left").contents[0])
+            QS_CURRENCY = str(player_soup.find(
+                class_="infobox__statline-right").contents[0])
 
             # Assign Player Traits
             try:
@@ -222,7 +241,6 @@ def grab_data(browser_num, start_page):
             eval(browser_num).get(player_url.replace("players", "compare"))
             eval(browser_num).implicitly_wait(0.5)
 
-
             # GEN ATTRIBUTES
             # Long code trying not to generate variables dynamically
             SPD = eval(browser_num).find_element_by_xpath(
@@ -243,7 +261,7 @@ def grab_data(browser_num, start_page):
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[8]/td[1]').text
             INJ = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[2]/table/tbody/tr[9]/td[1]').text
-           
+
             # OFF ATTRIBUTES
             TRK = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[3]/table/tbody/tr[1]/td[1]').text
@@ -335,7 +353,7 @@ def grab_data(browser_num, start_page):
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[5]/table/tbody/tr[2]/td[1]').text
             RET = eval(browser_num).find_element_by_xpath(
                 '//*[@id="slideout__panel"]/div[2]/div[2]/div/div[5]/table/tbody/tr[3]/td[1]').text
-            
+
             # Appending all the features together
             for feature in features:
                 player_data.append(eval(feature))
@@ -344,17 +362,18 @@ def grab_data(browser_num, start_page):
     eval(browser_num).quit()
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     thread1 = threading.Thread(target=grab_data, args=("browser1", 101))
     thread2 = threading.Thread(target=grab_data, args=("browser2", 102))
     thread3 = threading.Thread(target=grab_data, args=("browser3", 103))
     thread4 = threading.Thread(target=grab_data, args=("browser4", 104))
     thread5 = threading.Thread(target=grab_data, args=("browser5", 105))
-    for i in range(0,5)
+
+    for i in range(0, 5):
         eval("thread" + str(i)).start()
-    for i in range(0,5)
+    for i in range(0, 5):
         eval("thread" + str(i)).join()
-        
+
     print("All other threads are finished")
 df = pd.DataFrame(data, columns=features)
 df.fillna(value=np.nan, inplace=True)
