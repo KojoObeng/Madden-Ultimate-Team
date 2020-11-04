@@ -31,10 +31,11 @@ class model:
 
         #
         # 'PRC', 'PBK', 'BSK', 'KAC']
-        self.skills_picked = ['OVR', 'AWA', 'BTK', 'PRC', 'PBK', 'BSK', 'KAC']
+        self.skills_picked = ['OVR', 'AWA',
+                              'BTK', 'PRC', 'PBK', 'BSK']  # 'KAC'
 
         self.quadratic_picked = ['AWA', 'BTK', 'PBK',
-                                 'MCV', 'POW', 'TAK', 'PRC', 'AGI', 'SPD']
+                                 'TAK', 'AGI', 'SPD']  # 'MCV', 'PRC' 'POW',
 
         # def add_features():
         #     for skill in self.skills_picked:
@@ -63,21 +64,21 @@ class model:
                                   "POW", "BSH", "PUR", "PRC", "MCV", "ZCV", "PRS"]],
                               [["POS_K", "POS_P"], ["KAC", "KPW"]]]
 
-            pos_skill_combos = [[["POS_LT", "POS_RG"], ["PBK", "RBK"]],
-                                [["POS_RT"], ["RBK"]],
-                                [["POS_HB"], ["PBK", "ACC", "BTK", "AGI"]],  # SPC
-                                [["POS_TE"], ["STR", "BCV"]],  # CAR, RLS
-                                [["POS_WR"], ["ACC", "CIT", "AGI"]],  # RLS
+            pos_skill_combos = [[["POS_RT"], ["PBK"]],  # RBK
+                                [["POS_HB"], ["PBK", "BTK", "AGI"]],  # SPC "ACC"
+                                [["POS_TE"], ["STR"]],  # CAR, RLS, "BCV
+                                [["POS_WR"], ["ACC", "CIT"]],  # RLS, "AGI"
                                 [["POS_LE"], ["FMV"]],
                                 [["POS_DT"], ["BSH", "PRC", "TAK"]],  # FMV
-                                [["POS_RE"], ["FMV", "STR"]],
+                                [["POS_RE"], ["STR"]],  # FMV
                                 [["POS_LOLB"], ["PUR"]],
                                 [["POS_MLB"], ["POW", "PUR"]],
                                 [["POS_CB"], ["PRC", "MCV"]],  # "BSH"
                                 [["POS_FS"], ["ZCV"]],
-                                [["POS_SS"], ["MCV"]],
-                                [["POS_K", "POS_P"], ["KAC", "KPW"]],
-                                [["POS_P"], ["KAC", "KPW"]]]  # [["POS_LG"], ["PBK"]]
+                                [["POS_K"], ["KAC", "KPW"]],
+                                [["POS_P"], ["KAC"]]]  # "KPW"
+            #  [["POS_SS"], ["MCV"]],
+            #  [["POS_RG"], ["PBK"]],
 
             pos_skill_list = []
             for combo in pos_skill_combos:
