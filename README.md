@@ -1,6 +1,6 @@
 # Madden Ultimate Team
 
-## What is Madden Ultimate Team?
+## What is Madden Ultimate Team? :video_game:
 Madden Ultimate Team is a popular mode in EA's Madden NFL video game series. EA releases new versions of every card for every NFL athlete as the year progresses with the card stats generally improving until the end of the game's life cycle. Cards can be bought for in-game currency on the auction house, or real money, and then used in a game of simulation football to play against other players across the world. With hundreds of thousands of players and an thriving auction house, it is by far the game's most popular mode as players grind towards getting the best version of their all-time favourite players and using them against their friends or other opponents online.
 
 Since there are so many people playing Madden Ultimate Team. The auction house simulates a real economy where prices of the in-game currency, 'coins', are valid determinants of the worth of a card. I have 3 purposes for this repository.
