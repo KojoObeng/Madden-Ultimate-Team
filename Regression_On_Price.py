@@ -65,7 +65,8 @@ class model:
                               [["POS_K", "POS_P"], ["KAC", "KPW"]]]
 
             pos_skill_combos = [[["POS_RT"], ["PBK"]],  # RBK
-                                [["POS_HB"], ["PBK", "BTK", "AGI"]],  # SPC "ACC"
+                                # SPC "ACC", "AGI"
+                                [["POS_HB"], ["PBK", "BTK"]],
                                 [["POS_TE"], ["STR"]],  # CAR, RLS, "BCV
                                 [["POS_WR"], ["ACC", "CIT"]],  # RLS, "AGI"
                                 [["POS_LE"], ["FMV"]],
@@ -75,7 +76,7 @@ class model:
                                 [["POS_MLB"], ["POW", "PUR"]],
                                 [["POS_CB"], ["PRC", "MCV"]],  # "BSH"
                                 [["POS_FS"], ["ZCV"]],
-                                [["POS_K"], ["KAC", "KPW"]],
+                                [["POS_K"], ["KAC"]],
                                 [["POS_P"], ["KAC"]]]  # "KPW"
             #  [["POS_SS"], ["MCV"]],
             #  [["POS_RG"], ["PBK"]],
@@ -125,8 +126,6 @@ class model:
         drop_skills()
         drop_useless()
 
-        print(self.MutData.columns)
-
     def do_regression(self):
 
         self.regr_dict = {}
@@ -136,12 +135,11 @@ class model:
 
             self.X = self.MutData.drop(
                 columns=["PLAYER_NAME", "TEAM", "PRICE", "PROGRAM"], inplace=False)  # ,"POS", "PROGRAM"
+            self.X = sm.add_constant(self.X)
             self.y = self.MutData["PRICE"].astype(
                 float).transform(lambda x: math.log(x))
             self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
                 self.X, self.y, test_size=.2)
-            print(self.X.head())
-            print(self.y.head())
 
         def linear_regression():
             # Create regression
@@ -162,7 +160,8 @@ class model:
 
             model = sm.OLS(self.y, self.X)
             model_fit = model.fit()
-            print(model_fit.summary())
+            # print(model_fit.summary())
+            print(linear_results)
 
         def ridge_regression():
             # Create regression
@@ -197,14 +196,13 @@ class model:
 
         setup_regression()
         linear_regression()
-        # ridge_regression()
-        # lasso_regression()
+        ridge_regression()
+        lasso_regression()
     # -----------------------------------------------------------------------------
 
     # Which coefficients were picked in this type of regression?
     def coefficient_picks(self, coeff, type_of_reg):
         print("-----------------" + type_of_reg + "-----------------")
-
         num_of_nonzero = np.sum(np.abs(coeff.astype(float) != 0))
         num_of_zero = coeff.size - num_of_nonzero
 
@@ -237,7 +235,7 @@ class model:
 
     def final_model(self):
         # ------------- Final Model------------------
-        y_pred = self.lasso_regr.predict(self.X)
+        y_pred = self.linear_regr.predict(self.X)
         df = pd.DataFrame(
             {'Actual': self.y, 'Predicted': y_pred}).apply(np.exp)
         MutDataFinal = self.MutData.join(df)
@@ -261,5 +259,5 @@ class model:
 # Calls
 Test = model()
 Test.do_regression()
-# Test.final_model()
+Test.final_model()
 # Test.plot()
