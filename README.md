@@ -1,6 +1,7 @@
 # Madden Ultimate Team
-
-![Mut20Logo](https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.JPG =20)
+<center>
+   <img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.jpg" height="200" class="center"> 
+</center>
 
 ## What is Madden Ultimate Team? :video_game:
 
@@ -11,7 +12,9 @@
 
 - Since there are so many people playing Madden Ultimate Team. The auction house simulates a real economy where prices of the in-game currency, 'coins', are valid determinants of the worth of a card. I have 3 purposes for this repository.
 
-![Nick Foles](https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/nick_foles.JPG = 30)
+<center>
+  <img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/nick_foles.JPG" height="500" class="center">
+</center>
 
 ## 1. Muthead Scraper :computer:
 
