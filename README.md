@@ -1,7 +1,8 @@
 # Madden Ultimate Team
 <p style="text-align:center;">
-<img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.jpg" height="200" class="center"> 
+   <img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.jpg" height="200" class="center"> 
 </p>
+
 ## What is Madden Ultimate Team? :video_game:
 
 - Madden Ultimate Team is a popular mode in EA's Madden NFL video game series.
@@ -12,7 +13,7 @@
 - Since there are so many people playing Madden Ultimate Team. The auction house simulates a real economy where prices of the in-game currency, 'coins', are valid determinants of the worth of a card. I have 3 purposes for this repository.
 
 <p style="text-align:center;">
-<img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/nick_foles.JPG" height="500" class="center">
+  <img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/nick_foles.JPG" height="500" class="center">
 </p>
 
 ## 1. Muthead Scraper :computer:
