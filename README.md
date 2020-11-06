@@ -1,6 +1,6 @@
 # Madden Ultimate Team
 
-![Nick Foles](https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/nick_foles.JPG)
+![Mut20Logo](https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.JPG =20)
 
 ## What is Madden Ultimate Team? :video_game:
 
@@ -10,6 +10,8 @@
   \*With hundreds of thousands of players and an thriving auction house, it is by far the game's most popular mode as players grind towards getting the best version of their all-time favourite players and using them against their friends or other opponents online.
 
 - Since there are so many people playing Madden Ultimate Team. The auction house simulates a real economy where prices of the in-game currency, 'coins', are valid determinants of the worth of a card. I have 3 purposes for this repository.
+
+![Nick Foles](https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/nick_foles.JPG = 30)
 
 ## 1. Muthead Scraper :computer:
 
