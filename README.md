@@ -1,6 +1,6 @@
 # Madden Ultimate Team
 
-<img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.JPG" height="500" class="center"> 
+<img src="https://github.com/KojoObeng/Madden-Ultimate-Team/blob/master/Images/mut20logo.jpg" height="200" class="center"> 
 
 ## What is Madden Ultimate Team? :video_game:
 
